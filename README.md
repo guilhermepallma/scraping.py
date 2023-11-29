@@ -13,7 +13,7 @@ Esta ferramenta é completamente segura e está livre de códigos maliciosos. O 
   <br>
   Para executar a aplicação, comece clonando este repositório ao executar o comando abaixo:
 
-    git clone git@github.com:guilhermepallma/scraping.py.git
+    git clone git@github.com:guilhermepallma/scraping_stock_b2w.py.git
 
   Crie um ambiente virtual para a execução do programa:
 
