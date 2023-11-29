@@ -1,4 +1,4 @@
-# Scraping B2W Marketplace
+# Scraping Marketplace B2W
 
 Esta ferramenta foi desenvolvida com o objetivo de solucionar um problema de controle de estoque, uma vez que a ferramenta original da B2W está desatualizada e apresenta diversos problemas. Para utilizar esta ferramenta, será necessário ter seu login e senha, uma lista dos SKUs cadastrados na B2W e uma conexão estável com a internet. Estou trabalhando para automatizar a coleta dos SKUs de maneira automática, porém, até o momento atual, essa funcionalidade ainda não está disponível, então a obtenção dos SKUs continua sendo um processo manual.
 
