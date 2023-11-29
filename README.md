@@ -15,9 +15,13 @@ Esta ferramenta é completamente segura e está livre de códigos maliciosos. O 
 
     git clone git@github.com:guilhermepallma/scraping_marketplace_b2w.git
 
+  Entre no diretório raiz do projeto:
+
+    cd scraping_marketplace_b2w
+  
   Crie um ambiente virtual para a execução do programa:
 
-    python3 -m venv .venv
+    python -m venv .venv
     
   Ative o ambiente virtual:
   
@@ -25,7 +29,7 @@ Esta ferramenta é completamente segura e está livre de códigos maliciosos. O 
 
   Instale as dependências no ambiente virtual:
 
-    python3 -m pip install -r requirements.txt
+    python -m pip install -r requirements.txt
 
   Com o seu ambiente virtual ativo, as dependências serão instaladas neste ambiente. Quando precisar desativar o ambiente virtual, execute o comando `deactivate`. Lembre-se de ativar novamente quando voltar a trabalhar no projeto. O arquivo `requirements.txt` instalará todas as dependências que serão utilizadas no projeto.
     
@@ -44,7 +48,7 @@ Esta ferramenta é completamente segura e está livre de códigos maliciosos. O 
     
   Para iniciar o scraping bastar rodar o seguinte comando:
   
-    python3 main.py
+    python main.py
 
   Conforme mencionado anteriormente, a coleta dos SKUs da B2W ainda não foi automatizada. Portanto, é necessário preencher o arquivo 'skus.py' manualmente com todos os SKUs que deseja monitorar, seguindo a seguinte formatação:
 
