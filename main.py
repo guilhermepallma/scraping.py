@@ -16,15 +16,15 @@ from selenium.webdriver.support import expected_conditions as EC
 load_dotenv()
 options = Options()
 options.add_argument('windows-size=1366,768')
-navegador = webdriver.Chrome(options=options)
+browser = webdriver.Chrome(options=options)
 
-navegador.get('https://portal.americanasmarketplace.com.br/v3/produtos')
+browser.get('https://portal.americanasmarketplace.com.br/v3/produtos')
 
 sleep(3)
 
-input_email = navegador.find_element('xpath', '//*[@id="main"]/app-login/main/section/div/div[1]/form/div[1]/input')
-input_pass = navegador.find_element('xpath', '//*[@id="main"]/app-login/main/section/div/div[1]/form/div[2]/input')
-button_enter = navegador.find_element('xpath', '//*[@id="main"]/app-login/main/section/div/div[1]/form/p/button')
+input_email = browser.find_element('xpath', '//*[@id="main"]/app-login/main/section/div/div[1]/form/div[1]/input')
+input_pass = browser.find_element('xpath', '//*[@id="main"]/app-login/main/section/div/div[1]/form/div[2]/input')
+button_enter = browser.find_element('xpath', '//*[@id="main"]/app-login/main/section/div/div[1]/form/p/button')
 
 input_email.send_keys(os.getenv('EMAIL'))
 input_pass.send_keys(os.getenv('PASSWORD'))
@@ -40,15 +40,39 @@ data = []
 for sku in skus.all_skus:
     try:
         url = f'https://portal.americanasmarketplace.com.br/v3/produtos/detalhes?sku={sku}'
-        navegador.get(url)
+        browser.get(url)
         sleep(3)
-        page_content = navegador.page_source
+        page_content = browser.page_source
         site = BeautifulSoup(page_content, 'html.parser')
         product_name = site.find('h1', class_='mt-0 title-product bold').text.strip()
         
-        stock_01 = WebDriverWait(navegador, 20).until(EC.presence_of_element_located((By.ID, 'variation-0-input-store-0-stock-qty')))
-        stock_02 = WebDriverWait(navegador, 20).until(EC.presence_of_element_located((By.ID, 'variation-0-input-store-1-stock-qty')))
-                              
+        ids_01 = ['variation-0-input-store-0-stock-qty', 'input-store-0-stock-qty']
+        
+        element_01 = None
+        
+        for id_element in ids_01:
+            try:
+                element_01 = browser.find_element(By.ID, id_element)
+                if element_01:
+                    stock_01 = WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.ID, id_element)))
+                break
+            except NoSuchElementException:
+                pass 
+        
+        
+        ids_02 = ['variation-0-input-store-1-stock-qty', 'input-store-1-stock-qty']
+        
+        element_02 = None
+        
+        for id_element in ids_02:
+            try:
+                element_02 = browser.find_element(By.ID, id_element)
+                if element_02:
+                    stock_02 = WebDriverWait(browser, 20).until(EC.presence_of_element_located((By.ID, id_element)))
+                break
+            except NoSuchElementException:
+                pass
+                            
         input_01 = stock_01.get_attribute('value')
         input_02 = stock_02.get_attribute('value')
         
